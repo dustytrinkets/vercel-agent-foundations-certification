@@ -1,0 +1,16 @@
+lib/agent.ts
+  h_39fd2f793212d4 2-3,6-7
+lib/tools.ts
+  h_39fd2f793212d4 1-3,5-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1ee00c1c7514e1e36e1ac1ffce8850a54d17087b",
+  "prompts": {},
+  "humans": {
+    "h_39fd2f793212d4": {
+      "author": "Laura Corbi <lauracvil@ext.inditex.com>"
+    }
+  }
+}
