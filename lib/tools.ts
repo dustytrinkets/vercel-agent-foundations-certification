@@ -1,6 +1,6 @@
 import { tool } from "ai";
 import { z } from "zod";
-import { ApiRequestError, createReturn, getCategories, getOrder, getProducts, preauthorizeRefund, notifyReturnInProcess } from "@/lib/api";
+import { ApiRequestError, createReturn, getCategories, getOrder, getProductById, getProductStock, getProducts, preauthorizeRefund, notifyReturnInProcess } from "@/lib/api";
 
 export const searchProducts = tool({
   description: `Search the Vercel swag store product catalog. Use this whenever the user asks about products, what the store sells, or wants recommendations. Optionally narrow results to a single category.`,
@@ -64,6 +64,41 @@ export const getAllCategories = tool({
       const message =
         err instanceof ApiRequestError ? err.message : "Unknown error";
       return { count: 0, categories: [], error: message };
+    }
+  },
+});
+
+export const getProductDetails = tool({
+  description: `Get full details for a single product, including all images, tags, and live stock availability. Use this when the user asks about a specific item (details, images, or whether it's in stock). Accepts a product id or slug.`,
+  inputSchema: z.object({
+    idOrSlug: z
+      .string()
+      .describe(`The product's id or slug, e.g. from a searchProducts result.`),
+  }),
+  execute: async ({ idOrSlug }) => {
+    try {
+      const [product, stock] = await Promise.all([
+        getProductById(idOrSlug),
+        getProductStock(idOrSlug),
+      ]);
+      return {
+        id: product.id,
+        name: product.name,
+        slug: product.slug,
+        description: product.description,
+        price: product.price,
+        currency: product.currency,
+        category: product.category,
+        images: product.images,
+        tags: product.tags,
+        stock: stock.stock,
+        inStock: stock.inStock,
+        lowStock: stock.lowStock,
+      };
+    } catch (err) {
+      const message =
+        err instanceof ApiRequestError ? err.message : "Unknown error";
+      return { error: message };
     }
   },
 });
