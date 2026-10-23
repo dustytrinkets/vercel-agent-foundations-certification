@@ -1,0 +1,20 @@
+.gitignore
+  h_39fd2f793212d4 27-28
+lib/tools.ts
+  h_39fd2f793212d4 4-5,73-90,92,94,96-98,100,103-104,116
+lib/workflows/return-flow.ts
+  h_39fd2f793212d4 1-27
+next.config.mjs
+  h_39fd2f793212d4 1-2,23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c763dd58e2908057cea48323202ab40e6eb1bec4",
+  "prompts": {},
+  "humans": {
+    "h_39fd2f793212d4": {
+      "author": "Laura Corbi <lauracvil@ext.inditex.com>"
+    }
+  }
+}
