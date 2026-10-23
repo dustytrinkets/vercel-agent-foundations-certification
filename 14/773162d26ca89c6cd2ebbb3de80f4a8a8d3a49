@@ -1,0 +1,26 @@
+app/api/chat/[id]/stream/route.ts
+  h_39fd2f793212d4 1-3,5-20
+app/api/chat/route.ts
+  h_39fd2f793212d4 1-5,7-16
+components/agent-chat.tsx
+  h_39fd2f793212d4 4-5,23,28-48
+lib/tools.ts
+  h_39fd2f793212d4 24,56,88,104
+lib/workflows/chat-flow.ts
+  h_39fd2f793212d4 1-28
+package-lock.json
+  h_39fd2f793212d4 11-12,50,189-207,8256-8271,10385-10390,10414-10429,11374-11379,15679-15687
+package.json
+  h_39fd2f793212d4 12-13,51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "14773162d26ca89c6cd2ebbb3de80f4a8a8d3a49",
+  "prompts": {},
+  "humans": {
+    "h_39fd2f793212d4": {
+      "author": "Laura Corbi <lauracvil@ext.inditex.com>"
+    }
+  }
+}
