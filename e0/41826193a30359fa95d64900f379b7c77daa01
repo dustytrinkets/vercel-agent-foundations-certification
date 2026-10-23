@@ -1,0 +1,23 @@
+components/agent-chat.tsx
+  s_e2afe6d3355d7b::t_238231e4fe0665 21,55-58
+components/agent-product-card.tsx
+  s_e2afe6d3355d7b::t_39b6175baa5be4 1-104
+lib/agent.ts
+  s_e2afe6d3355d7b::t_b9b40aeea3035b 19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e041826193a30359fa95d64900f379b7c77daa01",
+  "prompts": {},
+  "sessions": {
+    "s_e2afe6d3355d7b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e002269a-aa03-40a3-b623-5f455986ba58",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Laura Corbi <lauracvil@ext.inditex.com>"
+    }
+  }
+}
