@@ -1,6 +1,8 @@
 import { tool } from "ai";
 import { z } from "zod";
 import { ApiRequestError, createReturn, getCategories, getOrder, getProductById, getProductStock, getProducts, preauthorizeRefund, notifyReturnInProcess } from "@/lib/api";
+import { start } from "workflow/api";
+import { returnFlow } from "./workflows/return-flow";
 
 export const searchProducts = tool({
   description: `Search the Vercel swag store product catalog. Use this whenever the user asks about products, what the store sells, or wants recommendations. Optionally narrow results to a single category.`,
@@ -68,41 +70,6 @@ export const getAllCategories = tool({
   },
 });
 
-export const getProductDetails = tool({
-  description: `Get full details for a single product, including all images, tags, and live stock availability. Use this when the user asks about a specific item (details, images, or whether it's in stock). Accepts a product id or slug.`,
-  inputSchema: z.object({
-    idOrSlug: z
-      .string()
-      .describe(`The product's id or slug, e.g. from a searchProducts result.`),
-  }),
-  execute: async ({ idOrSlug }) => {
-    try {
-      const [product, stock] = await Promise.all([
-        getProductById(idOrSlug),
-        getProductStock(idOrSlug),
-      ]);
-      return {
-        id: product.id,
-        name: product.name,
-        slug: product.slug,
-        description: product.description,
-        price: product.price,
-        currency: product.currency,
-        category: product.category,
-        images: product.images,
-        tags: product.tags,
-        stock: stock.stock,
-        inStock: stock.inStock,
-        lowStock: stock.lowStock,
-      };
-    } catch (err) {
-      const message =
-        err instanceof ApiRequestError ? err.message : "Unknown error";
-      return { error: message };
-    }
-  },
-});
-
 export const returnOrder = tool({
   description: `File a return for one of the user's past orders. The user must provide an order ID and a reason. Example order IDs: 11111, 22222, 33333.`,
   inputSchema: z.object({
@@ -116,19 +83,41 @@ export const returnOrder = tool({
       .describe("Why the user is returning the order."),
   }),
   execute: async ({ orderId, reason }) => {
+    const run = await start(returnFlow, [orderId, reason]);
+    return { runId: run.runId, message: `Return request received for order ${orderId}.` };
+  },
+});
+
+export const getProductDetails = tool({
+  description: `Fetch the full details for a single product by its ID or slug, including every image, the full description, price, tags, and live stock levels. Use this when the user asks about a specific item (e.g. "tell me more about the black hoodie") — prefer it over searchProducts once you know which product they mean, since searchProducts only returns a summary.`,
+  inputSchema: z.object({
+    productId: z
+      .string()
+      .describe(
+        "The product's ID or slug, as returned by searchProducts (the id or slug field).",
+      ),
+  }),
+  execute: async ({ productId }) => {
     try {
-      const order = await getOrder(orderId);
-      await notifyReturnInProcess(orderId);
-      await preauthorizeRefund(orderId);
-      const filed = await createReturn({
-        orderId: order.id,
-        items: order.items.map((i) => ({
-          productId: i.productId,
-          quantity: i.quantity,
-        })),
-        reason,
-      });
-      return { returnId: filed.id, status: filed.status };
+      const [product, stock] = await Promise.all([
+        getProductById(productId),
+        getProductStock(productId),
+      ]);
+      return {
+        id: product.id,
+        name: product.name,
+        slug: product.slug,
+        description: product.description,
+        price: product.price,
+        currency: product.currency,
+        category: product.category,
+        images: product.images,
+        tags: product.tags,
+        featured: product.featured,
+        stock: stock.stock,
+        inStock: stock.inStock,
+        lowStock: stock.lowStock,
+      };
     } catch (err) {
       const message =
         err instanceof ApiRequestError ? err.message : "Unknown error";
