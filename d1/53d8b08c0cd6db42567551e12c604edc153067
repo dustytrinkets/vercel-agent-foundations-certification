@@ -1,0 +1,19 @@
+lib/tools.ts
+  s_e2afe6d3355d7b::t_a345982d7ffcc9 3,71-105
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d153d8b08c0cd6db42567551e12c604edc153067",
+  "prompts": {},
+  "sessions": {
+    "s_e2afe6d3355d7b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e002269a-aa03-40a3-b623-5f455986ba58",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Laura Corbi <lauracvil@ext.inditex.com>"
+    }
+  }
+}
