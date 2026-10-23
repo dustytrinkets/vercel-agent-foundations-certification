@@ -1,0 +1,19 @@
+lib/agent.ts
+  s_e2afe6d3355d7b::t_a4f384ab4e5ed2 15-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f9c629683b2cb8eecd141a044f5fd70d3580e619",
+  "prompts": {},
+  "sessions": {
+    "s_e2afe6d3355d7b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e002269a-aa03-40a3-b623-5f455986ba58",
+        "model": "unknown"
+      },
+      "human_author": "Laura Corbi <lauracvil@ext.inditex.com>"
+    }
+  }
+}
