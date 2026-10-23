@@ -1,0 +1,16 @@
+lib/agent.ts
+  h_39fd2f793212d4 12-13
+package-lock.json
+  h_39fd2f793212d4 1-11817
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a9d1296f6fad793e0132616a57d5e01c9b3816b0",
+  "prompts": {},
+  "humans": {
+    "h_39fd2f793212d4": {
+      "author": "Laura Corbi <lauracvil@ext.inditex.com>"
+    }
+  }
+}
