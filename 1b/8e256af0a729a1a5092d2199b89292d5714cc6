@@ -1,0 +1,16 @@
+app/api/chat/route.ts
+  h_39fd2f793212d4 12-18
+components/agent-chat.tsx
+  h_39fd2f793212d4 2,9,21-26,30-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1b8e256af0a729a1a5092d2199b89292d5714cc6",
+  "prompts": {},
+  "humans": {
+    "h_39fd2f793212d4": {
+      "author": "Laura Corbi <lauracvil@ext.inditex.com>"
+    }
+  }
+}
