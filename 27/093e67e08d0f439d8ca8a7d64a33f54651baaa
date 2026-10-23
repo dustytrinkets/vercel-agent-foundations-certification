@@ -1,0 +1,19 @@
+pnpm-lock.yaml
+  s_e2afe6d3355d7b::t_ae30cfdb79755a 125-127,2240-2242,2254-2257,2278-2281,2295-2297,2348-2350,2519-2521,3457-3459,3477-3479,3617-3619,4292-4295,6756-6760,6774-6775,6791-6796,6812-6830,7037-7038,7309-7312,8293-8294,8309-8310,8418-8419,9420-9421
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "27093e67e08d0f439d8ca8a7d64a33f54651baaa",
+  "prompts": {},
+  "sessions": {
+    "s_e2afe6d3355d7b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e002269a-aa03-40a3-b623-5f455986ba58",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Laura Corbi <lauracvil@ext.inditex.com>"
+    }
+  }
+}
